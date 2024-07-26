@@ -1,0 +1,2 @@
+lista= ALuno.objects.all(); print(lista)
+pra ver o que foi adicionado de alunos no db.sqlite
