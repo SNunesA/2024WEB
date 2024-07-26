@@ -1,2 +1,8 @@
 lista= ALuno.objects.all(); print(lista)
 pra ver o que foi adicionado de alunos no db.sqlite
+c3= Curso(nome="TADS") criar Curso
+disciplina=Disciplina(nome="Calculo", cod
+    ...: igo="CAL", curso=c3) criar disciplina e relacionar a um curso
+
+curso1 = Curso.objects.filter(nome="TADS").first() pegar o endereço do objeto
+curso1= Curso.objects.get(codigo="TADS") outra forma
