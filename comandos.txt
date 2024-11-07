@@ -22,6 +22,7 @@ python3 manage.py makemigrations
 python3 manage.py migrate
 
 toda vez q criar um modulo
+cria a view
 registra urls do modulo e projeto
 habilita o app no settings.py do projeto
 habilita o acesso do app no admin.py do modulo

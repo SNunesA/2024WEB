@@ -2,6 +2,17 @@ comandos
  python3 -m pip install Django djangorestframework
  django-admin startproject nome_projeto
  python3 manage.py startapp nome_app
+ vai em settings e coloca o app em instaled apps e o rest_framework
+ cria um urls.py pro app 
+ cria o serializers.py no app
+
+toda vez q criar um modulo
+vai no serializers e importa o models
+vai nas views e importa o models e a serializer
+
+registra urls do modulo no projeto e no app
+no projeto tem que importar o include 
+
  Atualizando Banco de Dados
 python3 manage.py makemigrations 
 python3 manage.py migrate
