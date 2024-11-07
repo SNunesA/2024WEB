@@ -30,14 +30,14 @@ class ArtistaView(APIView):
     View para recuperar, atualizar ou deletar um Artista específico.
     """
     def get(self, request):
-        Artistas = Artista.objects.all()
-        serializer = ArtistaSerializer(Artistas, many=True)
+        artists = Artista.objects.all()
+        serializer = ArtistaSerializer(artists, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
 
 class ArtistaReadUpdateDeleteView(APIView):   
     def get(self, request, pk):
-        Artista = get_object_or_404(Artista, pk=pk)
+        artista = get_object_or_404(Artista, pk=pk)
 
         '''
         try:
@@ -46,18 +46,18 @@ class ArtistaReadUpdateDeleteView(APIView):
             return Response({'detail': 'Artista não encontrado.'}, status=status.HTTP_404_NOT_FOUND)
         '''
 
-        serializer = ArtistaSerializer(Artista)
+        serializer = ArtistaSerializer(artista)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     def put(self, request, pk):
-        Artista = get_object_or_404(Artista, pk=pk)
-        serializer = ArtistaSerializer(Artista, data=request.data)
+        artista= get_object_or_404(Artista, pk=pk)
+        serializer = ArtistaSerializer(artista, data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def delete(self, request, pk):
-        Artista = get_object_or_404(Artista, pk=pk)
-        Artista.delete()
+        artista = get_object_or_404(Artista, pk=pk)
+        artista.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
