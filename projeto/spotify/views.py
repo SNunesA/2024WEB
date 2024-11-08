@@ -4,8 +4,8 @@ from rest_framework.response import Response
 from rest_framework import status
 from django.shortcuts import get_object_or_404
 
-from .models import Artista
-from .serializers import ArtistaSerializer
+from .models import Artista, Album
+from .serializers import ArtistaSerializer, AlbumArtistaserializer
 
 
 # Create your views here.
@@ -61,3 +61,18 @@ class ArtistaReadUpdateDeleteView(APIView):
         artista = get_object_or_404(Artista, pk=pk)
         artista.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+    
+
+class AlbumAutorAPIView(APIView):
+
+    def post(self, request):
+        serializer = AlbumArtistaserializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def get(self, request):
+        albums = Album.objects.all()
+        serializer = AlbumArtistaserializer(albums, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)

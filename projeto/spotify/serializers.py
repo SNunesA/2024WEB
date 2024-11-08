@@ -7,7 +7,7 @@ class ArtistaSerializer(serializers.ModelSerializer):
         fields='__all__'
 
 
-class AlbumArtistaerializer(serializers.ModelSerializer):
+class AlbumArtistaserializer(serializers.ModelSerializer):
     artista = ArtistaSerializer()
 
     class Meta:

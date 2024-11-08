@@ -44,3 +44,17 @@ PUT http://127.0.0.1:8000/api/sistema/autor/2/
 }
 
 DELETE http://127.0.0.1:8000/api/sistema/autor/3/
+
+ALBUM artista
+POST http://127.0.0.1:8000/api/spotify/album/artista/
+
+{
+  "titulo": "Summer",
+  "ano_publicacao": 2016,
+  "artista": {
+    "nome": "demi lovato",
+    "genero": "POP"
+  }
+}
+
+GET http://127.0.0.1:8000/api/spotify/album/artista/
